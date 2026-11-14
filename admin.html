@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AI Assistant · Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="admin-body">
+  <div class="admin-login" id="adminLogin">
+    <div class="login-card">
+      <div class="brand admin-brand"><div class="brand-mark">A</div><div><div class="brand-name">AI Assistant</div><div class="brand-subtitle">Admin Console</div></div></div>
+      <h1>管理员登录</h1>
+      <p>使用你在 Supabase Auth 中创建的管理员账号。</p>
+      <form id="loginForm">
+        <input id="adminEmail" type="email" placeholder="邮箱" required />
+        <input id="adminPassword" type="password" placeholder="密码" required />
+        <button type="submit">登录</button>
+      </form>
+      <div class="form-error" id="loginError"></div>
+    </div>
+  </div>
+  <div class="admin-app" id="adminApp" hidden>
+    <aside class="conversation-panel">
+      <div class="admin-panel-head"><div><strong>会话</strong><small id="adminIdentity"></small></div><button class="ghost-btn" id="logoutBtn">退出</button></div>
+      <div id="conversationList" class="conversation-list"></div>
+    </aside>
+    <main class="admin-chat">
+      <header class="admin-chat-head"><div><strong id="activeConversationTitle">请选择一个会话</strong><small id="activeConversationMeta"></small></div></header>
+      <section class="messages admin-messages" id="adminMessages"><div class="empty-admin">左侧选择一个会话开始回复</div></section>
+      <form class="composer admin-composer" id="adminReplyForm"><textarea id="adminReplyInput" rows="1" placeholder="输入回复…" disabled></textarea><button id="adminSendBtn" type="submit" disabled>↑</button></form>
+    </main>
+  </div>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

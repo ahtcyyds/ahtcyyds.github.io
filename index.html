@@ -1,62 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>疯狂抖动页面</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow: hidden;
-        }
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-        }
-    </style>
-    <script type="text/javascript">
-        // 随机颜色生成器
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-
-        // 随机抖动函数
-        function shake() {
-            const body = document.body;
-            const h1 = document.querySelector('h1');
-
-            // 随机抖动
-            body.style.transform = `translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
-
-            // 随机背景颜色
-            body.style.backgroundColor = getRandomColor();
-
-            // 随机文字颜色
-            h1.style.color = getRandomColor();
-
-            // 随机旋转文字
-            h1.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-            // 递归调用，持续抖动
-            requestAnimationFrame(shake);
-        }
-
-        // 页面加载后开始抖动
-        window.onload = shake;
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Assistant - 在线智能助手" />
+  <title>AI Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <h1>bt好帅！</h1>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <div class="brand-name">AI Assistant</div>
+          <div class="brand-subtitle">Human-assisted AI</div>
+        </div>
+      </div>
+      <button class="new-chat" id="newChatBtn" type="button">＋ 新对话</button>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-note">复杂问题可能由人工协助回答</div>
+    </aside>
+    <main class="chat-main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenuBtn" aria-label="打开菜单">☰</button>
+        <div>
+          <div class="assistant-title">AI Assistant</div>
+          <div class="status"><span class="status-dot"></span><span id="statusText">在线</span></div>
+        </div>
+      </header>
+      <section class="messages" id="messages">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">✦</div>
+          <h1>你好，我是 AI Assistant</h1>
+          <p>你可以问我任何问题。复杂问题可能会由人工协助完成。</p>
+          <div class="suggestions">
+            <button class="suggestion">帮我分析一个问题</button>
+            <button class="suggestion">给我一些建议</button>
+            <button class="suggestion">帮我整理思路</button>
+          </div>
+        </div>
+      </section>
+      <div class="composer-wrap">
+        <div class="typing" id="typing" hidden><span></span><span></span><span></span><em>Assistant 正在思考</em></div>
+        <form class="composer" id="chatForm">
+          <textarea id="messageInput" rows="1" placeholder="给 AI Assistant 发消息" maxlength="4000"></textarea>
+          <button id="sendBtn" type="submit" aria-label="发送">↑</button>
+        </form>
+        <div class="disclaimer">AI Assistant 可能会出错；部分回复可能由人工协助。</div>
+      </div>
+    </main>
+  </div>
+  <div class="setup-banner" id="setupBanner" hidden>尚未连接后端。请先填写 <code>config.js</code> 中的 Supabase 配置。</div>
+  <script src="config.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html>

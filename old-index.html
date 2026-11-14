@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>疯狂抖动页面</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) color += letters[Math.floor(Math.random() * 16)];
+            return color;
+        }
+        function shake() {
+            const body = document.body;
+            const h1 = document.querySelector('h1');
+            body.style.transform = `translate(${Math.random() * 50 - 25}px, ${Math.random() * 50 - 25}px)`;
+            body.style.backgroundColor = getRandomColor();
+            h1.style.color = getRandomColor();
+            h1.style.transform = `rotate(${Math.random() * 360}deg)`;
+            requestAnimationFrame(shake);
+        }
+        window.onload = shake;
+    </script>
+</head>
+<body>
+    <h1>bt好帅！</h1>
+</body>
+</html>
